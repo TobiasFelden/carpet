@@ -3,15 +3,10 @@ with tyr.math.`3d`.Vector
 
 //hier werden alle Gegner für ein Level initialisiert. 
 //Die Gegner werden aus der Gegner Klasse in ein Array abgelegt. 
-class GegnerSammlung {
+class MonsterCollection {
 
     
-}
-
-class Entity {
-
-    var position : Vector
-
+    
 }
 
 class Creature <: Entity {
@@ -36,7 +31,7 @@ class Creature <: Entity {
 /*
     Gegner brauchen eine Position, einen
 */
-class Gegner <: Creature{
+class Monster <: Creature{
 
     val aggroRange : int
 
@@ -66,7 +61,7 @@ type stat {
 }
 
 //irgendwie muss ein Gegner Schaden anrichten können
-type zaubern {
+type cast {
 
 }
 

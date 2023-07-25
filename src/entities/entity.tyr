@@ -1,0 +1,8 @@
+with tyr.math.`3d`.Vector
+
+class Entity {
+
+    var position : Vector
+    val id : int
+
+}

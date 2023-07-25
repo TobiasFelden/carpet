@@ -1,0 +1,40 @@
+//Ein standard Gegner in verschiedenen Ausführungen
+
+class SkeletonWarrior <: Monster {
+
+    new (){
+        Monster.new()
+        hp = new stat(15f, 0f)
+        mana = new stat(5f, 0.5f)
+        velocity = new stat(0.3f, 0.1f)
+        aggroRange = 6
+        //spell[nahkampf]
+    }
+
+}
+
+class SkeletonArcher <: Monster {
+
+    new (){
+        Monster.new()
+        hp = new stat(10f, 0f)
+        mana = new stat(5f, 0.5f)
+        velocity = new stat(0.2f, 0.1f)
+        aggroRange = 10
+        //spell[shot]
+    }
+
+}
+
+class SkeletonMage <: Monster {
+
+    new (){
+        Monster.new()
+        hp = new stat(10f, 0f)
+        mana = new stat(10f, 1f)
+        velocity = new stat(0.2f, 0.1f)
+        aggroRange = 15
+        //spell[firebolt]
+    }
+
+}

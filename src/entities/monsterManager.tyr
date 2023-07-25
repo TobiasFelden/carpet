@@ -1,0 +1,12 @@
+/*  
+    Monster müssen positioniert werden.
+    Monster müssen regenerieren Mana/Hp oder beides
+    Monster müssen sich bewegen und auf bestimmte Ziele zu gehen 
+    Monster müssen angreifen gezielt und ungezielt
+    Monster müssen sterben und gegebenenfalls dadurch Events auslösen z.B. Mana dropen, andere Monster spawnen oder ein Portal öffnen.
+    Monster bewegen sich zu einem zufälligen Ziel, wenn sie dort ohne Berührung mit einem Monster hingekommen sind, dann wählen sie das nächste zufällige Ziel aus.
+    Monster können Schwärme bilden und bewegen sich dann als Gruppe
+*/
+class MonsterManager {
+
+}

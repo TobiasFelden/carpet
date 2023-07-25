@@ -1,0 +1,7 @@
+Render Distance: 64
+Fog start: 32
+Fog end: 52
+Projectile Distance: 64
+Worldsize: 256x256
+Velocity: 1f = 1 Cube/s
+MeleeRange: 1 Cube

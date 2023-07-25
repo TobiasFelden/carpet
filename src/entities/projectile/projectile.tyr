@@ -1,0 +1,10 @@
+
+class Projectile <: Entity {
+
+    val caster : entityProxy
+    val velocity : Vector
+    var traveledDistance : float
+    type val maxDistanceTraveled : float = 64f
+    
+
+}

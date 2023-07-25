@@ -1,0 +1,14 @@
+//Imp so unscheinbar wie der Name lang ist
+
+class Imp <: Monster {
+
+    new (){
+        Monster.new()
+        hp = new stat(10f, 0f)
+        mana = new stat(5f, 0.1f)
+        velocity = new stat(0.2f, 0.1f)
+        aggroRange = 25
+
+    }
+
+}
