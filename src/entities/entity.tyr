@@ -5,4 +5,9 @@ class Entity {
     var position : Vector
     val id : int
 
+    new () {
+        id = EntityManager.register(this)
+    }
+
+    def proxy : entityProxy = new entityProxy(id)
 }

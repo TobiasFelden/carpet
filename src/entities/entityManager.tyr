@@ -4,5 +4,20 @@ class EntityManager {
 
     type val global = new EntityManager
     private new;
+    type def register (e : Entity) : int {
+
+        if (freeList.empty()) {
+            val id = entities.size()
+            entities += e
+            return id
+        }
+        
+        val id = freeList.removeLast()
+        entities(id) = e
+        return id
+    }
+
+    private val entities = new container.ArrayBuffer[Entity](1024)
+    private val freeList = new container.ArrayBuffer[int]
 
 }

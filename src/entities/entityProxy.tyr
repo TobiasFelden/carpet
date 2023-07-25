@@ -1,5 +1,7 @@
 type entityProxy {
-    
+
     val id : int
+
+    new(id := id : int) {}
 
 }
