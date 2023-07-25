@@ -1,0 +1,8 @@
+//verwaltet alle Entitäten
+
+class EntityManager {
+
+    type val global = new EntityManager
+    private new;
+
+}

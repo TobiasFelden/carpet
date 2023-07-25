@@ -1,0 +1,5 @@
+type entityProxy {
+    
+    val id : int
+
+}
