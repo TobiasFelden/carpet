@@ -1,0 +1,73 @@
+with tyr.math.`3d`.Vector
+
+
+//hier werden alle Gegner für ein Level initialisiert. 
+//Die Gegner werden aus der Gegner Klasse in ein Array abgelegt. 
+class GegnerSammlung {
+
+    
+}
+
+class Entity {
+
+    var position : Vector
+
+}
+
+class Creature <: Entity {
+
+    var hp : stat
+    var mana : stat
+    var velocity : stat
+    
+    /** Man regeneriert hp oder mana sofern man nicht tot (false = tot)*/
+    def regeneration(dT : float) : bool {
+        if(hp.current <= 0f) {
+            return false
+        }
+        hp.current += hp.regeneration * dT
+        mana.current += mana.regeneration * dT
+        return true
+    }
+    
+
+}
+
+/*
+    Gegner brauchen eine Position, einen
+*/
+class Gegner <: Creature{
+
+    val aggroRange : int
+
+}
+
+type stat {
+
+    val base : float
+    var current : float
+    val regeneration : float
+    new (base := base : float, regeneration := regeneration : float){current = base}
+
+    def -= (this : Ref[stat], decrease : float) : void <: operator.precedence[20]{
+        current -= decrease
+        if (current < 0f) current = 0f
+    }
+    
+    def += (this : Ref[stat], increase : float) : void <: operator.precedence[20]{
+        current += increase
+        if (current > base) current = base
+    }
+
+    def regenerate(this : Ref[stat], dT : float) : void {
+        this += regeneration * dT
+    }
+
+}
+
+//irgendwie muss ein Gegner Schaden anrichten können
+type zaubern {
+
+}
+
+//
