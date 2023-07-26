@@ -5,3 +5,29 @@ Projectile Distance: 64
 Worldsize: 256x256
 Velocity: 1f = 1 Cube/s
 MeleeRange: 1 Cube
+
+
+Spells:
+
+Projectile:
+Firebolt
+Castle
+Possession
+Vulcano
+Frostbolt
+
+selfSpell:
+SelfHeal
+Shield
+Speed
+Reflect
+Invisibility
+Vision
+
+CloudSpells:
+FrostCloud
+PoisonCloud
+Thunderstorm
+GravityCloud
+
+
