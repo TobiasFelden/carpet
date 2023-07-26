@@ -3,63 +3,63 @@ with _root_.tyr.lang.container.ArrayBuffer
 with _root_.tyr.lang.container.Pair
 with tyr.math.`3d`.Vector
 
-class EntityManager {
+class EntityManager <: abstract, final {
 
-    type val global = new EntityManager
-    private new;
-    def register (e : Entity) : int {
+  /**
+   * A list of all entities. Can contain nulls in valid positions if the
+   * entities have been deleted.
+   */
+  private type val entities = new container.ArrayBuffer[Entity](1024)
+  /**
+   * A list of free indices in entities.
+   */
+  private type val freeList = new container.ArrayBuffer[int]
 
-        if (freeList.empty()) {
-            val id = global.entities.size().sign().resize[32]()
-            global.entities += e
-            return id
-        }
-        
-        val id = freeList.removeLast()
-        global.entities(id) = e
-        return id
+  type def register (e : Entity) : int {
+
+    if (freeList.empty()) {
+      val id = entities.size().sign().resize[32]()
+      entities += e
+      return id
     }
 
-    type def register (e : Entity) : int = global.register(e)
+    val id = freeList.removeLast()
+    EntityManager.entities(id) = e
+    return id
+  }
 
-    private val entities = new container.ArrayBuffer[Entity](1024)
-    private val freeList = new container.ArrayBuffer[int]
+  type def getAllInDistance (
+      base : Entity, distance : float, typ : Class[Entity]
+  ) : ArrayBuffer[Pair[Entity, float]] {
 
-    def getAllInDistance (base : Entity, distance : float, typ : Class[Entity])
-     : ArrayBuffer[Pair[Entity, float]] {
+    val r = new ArrayBuffer[Pair[Entity, float]]
+    val d = distance * distance
 
-        val r = new ArrayBuffer[Pair[Entity, float]]
-        val d = distance * distance
-
-        global.entities.foreach e : Entity do {
-            if(e != null || base != e){
-
-                if(typ ? e) {
-                    val d2 = e.position.distance2(base.position)
-                    if(d2 <= d) {
-                        r += new Pair[Entity, float](e, d2.sqrt())
-                    }
-                }
+    entities.foreach e : Entity do {
+      if(e != null && base != e){
+        if(typ ? e) {
+          val d2 = e.position.distance2(base.position)
+            if(d2 <= d) {
+              r += new Pair[Entity, float](e, d2.sqrt())
             }
+          }
         }
-        return r
+      }
+      return r
     }
-    type def getAllInDistance (base : Entity, distance : float, typ : Class[Entity])
-     : ArrayBuffer[Pair[Entity, float]] = global.getAllInDistance (base : Entity, distance : float, typ : Class[Entity])
 }
-type helperstuff{
-    with monsters.Imp
-    with monsters.SkeletonMage
-    with monsters.SkeletonWarrior
-    with monsters.SkeletonArcher
 
-    private type def createDummys() : container.ArrayBuffer[Entity] 
-    {
+private type entityTests {
+  with monsters.Imp
+  with monsters.SkeletonMage
+  with monsters.SkeletonWarrior
+  with monsters.SkeletonArcher
+
+  private type def createDummys() : container.ArrayBuffer[Entity] {
     val e1 = new Imp()
     val e2 = new SkeletonMage()
     val e3 = new SkeletonWarrior()
     val e4 = new SkeletonArcher()
-    
 
     e1.position.x = 0f
     e1.position.y = 0f
@@ -77,18 +77,12 @@ type helperstuff{
     return ent
 
     }
-    test "3 Entitäten 1 in Reichweite 1 nicht" {
+    test "create four entities and check that none is in range" {
     
         val ent = createDummys()
         var result = EntityManager.getAllInDistance(ent(1), 1f, Monster)
-        if(result.isDefined(0)){
-            return false
-        }
-
-
-        return true
-    
-
+        
+        return result.empty()
     }
 }
 
