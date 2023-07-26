@@ -1,0 +1,17 @@
+
+class Monster <: Creature{
+
+    val aggroRange : int
+
+
+    //collision nutzen
+    def inAggroRange() : bool {
+        if(false) {
+
+
+            return true
+        }
+
+        return false
+    }
+}

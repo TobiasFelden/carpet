@@ -1,0 +1,39 @@
+class Creature <: Entity, abstract {
+
+    var hp : stat
+    var mana : stat
+    var velocity : stat
+    
+    /** Man regeneriert hp oder mana sofern man nicht tot (false = tot)*/
+    def regeneration(dT : float) : bool {
+        if(hp.current <= 0f) {
+            return false
+        }
+        hp.current += hp.regeneration * dT
+        mana.current += mana.regeneration * dT
+        return true
+    }
+}
+
+type stat {
+
+    val base : float
+    var current : float
+    val regeneration : float
+    new (base := base : float, regeneration := regeneration : float){current = base}
+
+    def -= (this : Ref[stat], decrease : float) : void <: operator.precedence[20]{
+        current -= decrease
+        if (current < 0f) current = 0f
+    }
+    
+    def += (this : Ref[stat], increase : float) : void <: operator.precedence[20]{
+        current += increase
+        if (current > base) current = base
+    }
+
+    def regenerate(this : Ref[stat], dT : float) : void {
+        this += regeneration * dT
+    }
+
+}
