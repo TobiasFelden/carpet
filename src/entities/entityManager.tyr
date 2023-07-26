@@ -20,4 +20,22 @@ class EntityManager {
     private val entities = new container.ArrayBuffer[Entity](1024)
     private val freeList = new container.ArrayBuffer[int]
 
+    def getAllInDistance (base : Entity, distance : float, typ : Class[Entity])
+     : ArrayBuffer[Pair[Entity, float]] {
+
+        val r = ArrayBuffer[Pair[Entity, float]]
+        val d = distance * distance
+
+        entities.foreach e do {
+            if(e != null || base != e){
+
+                if(typ ? e) {
+                    val d2 = distanceSquared(e, base)
+                    if(d2 <= d) {
+                        r += new Pair[Entity, float](e, d2.sqrt())
+                    }
+                }
+            }
+        }
+    }
 }

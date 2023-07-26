@@ -1,4 +1,6 @@
 with tyr.math.`3d`.Vector
+with tyr.lang.container.ArrayBuffer
+with tyr.lang.container.Pair
 
 class Entity {
 
@@ -10,4 +12,6 @@ class Entity {
     }
 
     def proxy : entityProxy = new entityProxy(id)
+
+    
 }
