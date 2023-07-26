@@ -1,21 +1,26 @@
 //verwaltet alle Entitäten
+with _root_.tyr.lang.container.ArrayBuffer
+with _root_.tyr.lang.container.Pair
+with tyr.math.`3d`.Vector
 
 class EntityManager {
 
     type val global = new EntityManager
     private new;
-    type def register (e : Entity) : int {
+    def register (e : Entity) : int {
 
         if (freeList.empty()) {
-            val id = entities.size()
-            entities += e
+            val id = global.entities.size().sign().resize[32]()
+            global.entities += e
             return id
         }
         
         val id = freeList.removeLast()
-        entities(id) = e
+        global.entities(id) = e
         return id
     }
+
+    type def register (e : Entity) : int = global.register(e)
 
     private val entities = new container.ArrayBuffer[Entity](1024)
     private val freeList = new container.ArrayBuffer[int]
@@ -23,19 +28,68 @@ class EntityManager {
     def getAllInDistance (base : Entity, distance : float, typ : Class[Entity])
      : ArrayBuffer[Pair[Entity, float]] {
 
-        val r = ArrayBuffer[Pair[Entity, float]]
+        val r = new ArrayBuffer[Pair[Entity, float]]
         val d = distance * distance
 
-        entities.foreach e do {
+        global.entities.foreach e : Entity do {
             if(e != null || base != e){
 
                 if(typ ? e) {
-                    val d2 = distanceSquared(e, base)
+                    val d2 = e.position.distance2(base.position)
                     if(d2 <= d) {
                         r += new Pair[Entity, float](e, d2.sqrt())
                     }
                 }
             }
         }
+        return r
+    }
+    type def getAllInDistance (base : Entity, distance : float, typ : Class[Entity])
+     : ArrayBuffer[Pair[Entity, float]] = global.getAllInDistance (base : Entity, distance : float, typ : Class[Entity])
+}
+type helperstuff{
+    with monsters.Imp
+    with monsters.SkeletonMage
+    with monsters.SkeletonWarrior
+    with monsters.SkeletonArcher
+
+    private type def createDummys() : container.ArrayBuffer[Entity] 
+    {
+    val e1 = new Imp()
+    val e2 = new SkeletonMage()
+    val e3 = new SkeletonWarrior()
+    val e4 = new SkeletonArcher()
+    
+
+    e1.position.x = 0f
+    e1.position.y = 0f
+    e1.position.z = 0f
+    e2.position = new Vector(3f, 3f, 0f)
+    e3.position = new Vector(1f, 1f, 0f)
+    e4.position = new Vector(2f, 0f, 1f)
+
+    val ent = new container.ArrayBuffer[Entity]
+    ent += e1
+    ent += e2
+    ent += e3
+    ent += e4
+    
+    return ent
+
+    }
+    test "3 Entitäten 1 in Reichweite 1 nicht" {
+    
+        val ent = createDummys()
+        var result = EntityManager.getAllInDistance(ent(1), 1f, Monster)
+        if(result.isDefined(0)){
+            return false
+        }
+
+
+        return true
+    
+
     }
 }
+
+

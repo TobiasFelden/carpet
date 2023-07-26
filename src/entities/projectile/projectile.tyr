@@ -1,3 +1,4 @@
+with tyr.math.`3d`.Vector
 
 class Projectile <: Entity {
 
