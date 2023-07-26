@@ -1,4 +1,4 @@
 src=src
 name=carpet
-with tyr.all
+with tyr.math
 entryPoint=switchLevel
