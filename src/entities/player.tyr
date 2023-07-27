@@ -5,9 +5,14 @@
  *  
  */
 
-class Player <: Creature {
+class Player <: Wizard {
 
-    private type val knownSpells = new container.ArrayBuffer[Entity](10)
-    private type val allSpells = new container.ArrayBuffer[Entity](10)
-    
+    def onDeath() : void {   
+        Wizard.onDeath(this)
+        "Fokusiere die Kamera auf den Gegner, der einen getötet hat.\n"!!
+    }
+    test "Spieler tot" {
+        val p = new Player()
+        p.onDeath()
+    }
 }

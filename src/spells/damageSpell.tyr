@@ -1,3 +1,7 @@
 class DamageSpell <: Spell {
 
+
+    def cast() : void {
+        "Todo: erzeuge etwas das schaden anrichten kann\n"!!
+    }
 }

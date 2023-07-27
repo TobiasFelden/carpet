@@ -13,7 +13,18 @@ class Creature <: Entity, abstract {
         mana.current += mana.regeneration * dT
         return true
     }
+    
+    def takeDamage(damage : float) : void {
+        hp -= damage
+        if (hp.current == 0f) {
+            onDeath()
+            "Oh nein ich bin tot\n"!!
+        }        
+    }
+    def onDeath () : void; 
 }
+
+
 
 type stat {
 

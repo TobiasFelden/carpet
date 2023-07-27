@@ -6,6 +6,6 @@ class Spell <: abstract {
     val cooldown : float
     val manaCost : float
 
-    def cast() : void 
+    def cast() : void;
 
 }
