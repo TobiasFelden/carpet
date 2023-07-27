@@ -1,11 +1,11 @@
-class Faction <: abstract {
-    val faction : int
+ 
 
-    type def defineFaction() : void {
-      entities.foreach e : Entity do {
-        if(Wizard ? e) {
+class FactionManager <: abstract, final {
 
-        }
-      }
-    } 
+    type val all = new container.SmallSet[Faction]
+
+    type def register (f : Faction){
+        all += f
+    }
+        
 }

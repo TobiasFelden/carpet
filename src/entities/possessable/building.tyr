@@ -1,5 +1,7 @@
 
 class Building <: PossessableEntity {
-    
+    def onPossess(newOwner : Entity, oldOwner : Entity) : void{
+
+    }
 
 }

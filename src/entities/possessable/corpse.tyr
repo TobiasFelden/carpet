@@ -5,6 +5,8 @@ class Corpse <: PossessableEntity {
         value = 0;
     }
     
-    
+    def onPossess(newOwner : Entity, oldOwner : Entity) : void{
+
+    }
 
 }

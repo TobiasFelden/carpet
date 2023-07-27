@@ -6,10 +6,16 @@
  */
 
 class Wizard <: Creature {
-    val faction : int
+    val faction : Faction
 
     private type val knownSpells = new container.ArrayBuffer[Entity](10)
     private type val allSpells = new container.ArrayBuffer[Entity](10)
+
+    //faction := f weißt direkt dem val faction den Wert f zu.
+    //faction := f == faction = f
+    new (){   
+        faction = new Faction()
+    }
     
     def onDeath() : void {
         "TODO: Falle zu boden, binde die Mana Flags an das Skelett.\n
