@@ -7,6 +7,8 @@
 
 class Player <: Wizard {
 
+    
+
     def onDeath() : void {   
         Wizard.onDeath(this)
         "Fokusiere die Kamera auf den Gegner, der einen getötet hat.\n"!!

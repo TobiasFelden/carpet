@@ -1,0 +1,10 @@
+
+class Corpse <: PossessableEntity {
+    
+    new(){
+        value = 0;
+    }
+    
+    
+
+}

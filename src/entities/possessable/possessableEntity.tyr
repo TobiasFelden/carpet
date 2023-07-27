@@ -1,0 +1,13 @@
+
+class PossessableEntity <: Entity {
+    val value : float
+    val owner : entityProxy
+    
+    def switchOwner : void {
+        
+    }
+    def onPossess(newOwner : Entity, oldOwner : Entity) : void <: abstract {
+
+    }
+
+}

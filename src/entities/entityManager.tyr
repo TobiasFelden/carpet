@@ -46,7 +46,7 @@ class EntityManager <: abstract, final {
         }
       }
       return r
-    }
+    }    
 }
 
 private type entityTests {

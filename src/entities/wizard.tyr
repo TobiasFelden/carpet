@@ -6,6 +6,7 @@
  */
 
 class Wizard <: Creature {
+    val faction : int
 
     private type val knownSpells = new container.ArrayBuffer[Entity](10)
     private type val allSpells = new container.ArrayBuffer[Entity](10)

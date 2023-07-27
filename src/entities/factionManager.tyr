@@ -1,0 +1,11 @@
+class Faction <: abstract {
+    val faction : int
+
+    type def defineFaction() : void {
+      entities.foreach e : Entity do {
+        if(Wizard ? e) {
+
+        }
+      }
+    } 
+}
