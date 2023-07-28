@@ -1,4 +1,14 @@
 src=src
 name=carpet
+
 with tyr.math
-entryPoint=switchLevel
+with feldentm.symbolic
+
+entryPoint=main.main
+
+
+resources data
+exclude resource *.md
+exclude resource *.png
+
+resource textures.gras = textures/gras.data

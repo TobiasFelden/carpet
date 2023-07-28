@@ -1,0 +1,87 @@
+with feldentm.symbolic
+with feldentm.symbolic.Window
+with feldentm.thyGL.gl;
+
+with SDL := feldentm.thySDL;
+with SDL.sdl;
+
+type main {
+  type var window : Window
+  type val texture = new symbolic.TextureFromResource(textures.gras, 512, 512)
+
+  type def draw {
+
+    //Clears the screen
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+
+
+    //Creating a triangle
+    texture.bind();
+    gl.begin( gl.POLYGON );
+
+    gl.texCoord(1.0f, 0.0f)
+    gl.color( 1.0f, 0.0f, 0.0f );
+    gl.vertex( -0.6f, -0.5f, -0.75f ); 
+
+    gl.texCoord(0.0f, 1.0f)
+    gl.color(0, 0, 255);
+    gl.vertex(  0.0, 0.5, -0.75 );
+
+    gl.texCoord(1.0f, 1.0f)
+    gl.color( 0.0f, 0.0f, 1.0f);
+    gl.vertex(1f, -1f, -0.75f); 
+    gl.end();
+    gl.flush();
+  }
+
+  type def handleEvent(e : CRef[SDL.Event]) : void = switch e {
+    if KEYDOWN {
+      switch e.keysym.sym {
+        if RETURN { 
+          // 
+        }
+        if BACKSPACE {
+          //
+        }
+
+        else {
+          tyr.io.System.out.put(e.keysym.scancode)          
+        }
+      }
+    }
+
+    if MOUSEMOTION {
+      "motion\n"!!;
+      tyr.io.System.out.flush()
+      // if (0 > e.xrel) blueX -= e.xrel.toFloat[32]() / 100f * mouseSpeed
+      // if (0 < e.xrel) blueX += e.xrel.toFloat[32]() / 100f * mouseSpeed
+      // if (0 > e.yrel) blueY += mouseSpeed
+      // if (0 < e.yrel) blueY -= mouseSpeed
+    }
+
+    if MOUSEWHEEL {
+      "scroll\n"!!;
+      tyr.io.System.out.flush()
+      // if (0 > e.y) {mouseSpeed -= .001f; "dec\n"!!}
+      // if (0 < e.y) {mouseSpeed += .001f; "inc\n"!!}
+    }
+
+    if JOYBUTTONUP {
+      "joy button pressed\n"!!;
+    }
+    if JOYDEVICEADDED {
+      "joy added\n"!!;
+    }
+    if CONTROLLERBUTTONDOWN {
+      "controller button pressed\n"!!;
+    }
+    if CONTROLLERDEVICEADDED {
+      "controller added\n"!!;
+    }
+
+    else {}
+  }
+
+  type def main : void <: entryPoint = new Window(handleEvent, draw)
+}

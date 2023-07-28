@@ -38,7 +38,7 @@ class EntityManager <: abstract, final {
     entities.foreach e : Entity do {
       if(e != null && base != e){
         if(typ ? e) {
-          val d2 = e.position.distance2(base.position)
+          val d2 = e.position.distanceSquared(base.position)
             if(d2 <= d) {
               r += new Pair[Entity, float](e, d2.sqrt())
             }
