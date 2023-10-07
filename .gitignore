@@ -1,0 +1,7 @@
+
+# local tyr compiler output
+*.tl
+*.sg
+
+*.bc
+*.tests
