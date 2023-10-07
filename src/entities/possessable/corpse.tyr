@@ -1,12 +1,11 @@
 
 class Corpse <: PossessableEntity {
-    
-    new(){
-        value = 0f;
-    }
-    
-    def onPossess(newOwner : Entity, oldOwner : Entity) : void{
+  new(){
+    value = 0f;
+  }
 
-    }
-
+  override
+  def onPossess(newOwner : Entity, oldOwner : Entity) : void {
+    // TODO continue
+  }
 }
