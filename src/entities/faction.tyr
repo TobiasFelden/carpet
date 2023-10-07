@@ -1,0 +1,7 @@
+class Faction {
+    
+    
+    new () {        
+        FactionManager.register(this)
+    }
+}

@@ -46,7 +46,7 @@ class EntityManager <: abstract, final {
         }
       }
       return r
-    }
+    }    
 }
 
 private type entityTests {
@@ -83,6 +83,21 @@ private type entityTests {
         var result = EntityManager.getAllInDistance(ent(1), 1f, Monster)
         
         return result.empty()
+    }
+    test "take 5 dmg" {
+
+    val imp = new Imp()
+    imp.takeDamage(5f)
+    "nichts kann mich töten\n"!!
+
+    return imp.hp.current != 0f
+    }
+    test "take 51 dmg" {
+
+    val imp = new Imp()
+    imp.takeDamage(51f)
+
+    return imp.hp.current == 0f
     }
 }
 

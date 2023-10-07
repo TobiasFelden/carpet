@@ -1,5 +1,20 @@
+/*
+ *  Ein Player ist spielbar
+ *  Er verfügt über eine Steuerung, eine Kamera und eine Liste an verfügbaren
+ *  und an noch lernbaren Zaubern.
+ *  
+ */
 
+class Player <: Wizard {
 
-class Player <: Creature {
     
+
+    def onDeath() : void {   
+        Wizard.onDeath(this)
+        "Fokusiere die Kamera auf den Gegner, der einen getötet hat.\n"!!
+    }
+    test "Spieler tot" {
+        val p = new Player()
+        p.onDeath()
+    }
 }

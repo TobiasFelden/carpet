@@ -1,0 +1,11 @@
+
+
+class Spell <: abstract {
+
+    val icon : String
+    val cooldown : float
+    val manaCost : float
+
+    def cast() : void;
+
+}

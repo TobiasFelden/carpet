@@ -1,0 +1,6 @@
+class ProjectileSpell <: Spell {
+    
+    def cast() : void {
+        "Todo: erzeuge ein Objekt, dass durch die Gegend fliegt\n"!!
+    }
+}

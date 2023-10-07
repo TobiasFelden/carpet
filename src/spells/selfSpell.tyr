@@ -1,0 +1,7 @@
+class SelfSpell <: Spell {
+
+    def cast() : void {
+        "Todo: Der Effekt betrifft den Caster\n"!!
+
+    }
+}

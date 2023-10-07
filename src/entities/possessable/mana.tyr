@@ -1,0 +1,9 @@
+
+class Mana <: PossessableEntity {
+
+    val value : float
+    
+    def onPossess(newOwner : Entity, oldOwner : Entity) : void{
+
+    }
+}

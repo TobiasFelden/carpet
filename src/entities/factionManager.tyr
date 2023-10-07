@@ -1,0 +1,11 @@
+ 
+
+class FactionManager <: abstract, final {
+
+    type val all = new container.SmallSet[Faction]
+
+    type def register (f : Faction){
+        all += f
+    }
+        
+}
