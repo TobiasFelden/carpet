@@ -18,7 +18,7 @@ class Wizard <: Creature {
     }
     
     def onDeath() : void {
-        "TODO: Falle zu boden, binde die Mana Flags an das Skelett.\n
-        Erlaube Respawn auf der Burg.\n"!!
+        """TODO: Falle zu boden, binde die Mana Flags an das Skelett.\n
+        Erlaube Respawn auf der Burg.\n"""!!
     }
 }
