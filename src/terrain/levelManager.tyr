@@ -1,0 +1,11 @@
+/*
+ *  Der levelManager ist für das Spawnen von Ereignissen wie zuständig
+ *  Ereignisse sind Monster/neue Zauber Spawnen oder Zauber wirken 
+ */
+
+
+type levelManager {
+    type def switchLevel : void <: entryPoint {
+        
+    }
+}
