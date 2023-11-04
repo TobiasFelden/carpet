@@ -11,7 +11,7 @@ class LevelBuilder {
 
     new (size:=size : int, waterLevel:=waterLevel : float) {
         val maxSize = 255
-        map = new Array2[u8](size)
+        map = new Array2[u8](size, size)
 
         //def foreach 
     }

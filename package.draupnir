@@ -1,7 +1,7 @@
 src=src
 name=carpet
 
-with tyr.math
+with tyr.all
 with feldentm.symbolic
 
 entryPoint=main.main
