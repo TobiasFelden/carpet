@@ -1,3 +1,5 @@
+with tyr.math.`3d`.Vector
+
 with feldentm.symbolic
 with feldentm.symbolic.Window
 with feldentm.thyGL.gl;
@@ -14,25 +16,47 @@ type main {
     //Clears the screen
     gl.clear(gl.COLOR_BUFFER_BIT);
 
+    
+    val neuesLevel = new terrain.Level(maps.e1m1.iterator())
+    neuesLevel.draw(new Vector(0f,0f,0f))
+    delete neuesLevel
 
 
     //Creating a triangle
     texture.bind();
-    gl.begin( gl.POLYGON );
+    gl.begin( gl.TRIANGLES );
 
     gl.texCoord(1.0f, 0.0f)
     gl.color( 1.0f, 0.0f, 0.0f );
-    gl.vertex( -0.6f, -0.5f, -0.75f ); 
+    gl.vertex( -0.6f, -10.5f, -0.75f ); 
 
     gl.texCoord(0.0f, 1.0f)
     gl.color(0, 0, 255);
-    gl.vertex(  0.0, 0.5, -0.75 );
+    gl.vertex(  0.0, 10.5, -0.75 );
 
     gl.texCoord(1.0f, 1.0f)
     gl.color( 0.0f, 0.0f, 1.0f);
-    gl.vertex(1f, -1f, -0.75f); 
+    gl.vertex(1f, -11f, -0.75f); 
+
+    
+
+    gl.texCoord(1.0f, 0.0f)
+    gl.color( 1.0f, 0.0f, 0.0f );
+    gl.vertex( 0.6f, 10.5f, -0.75f ); 
+
+    gl.texCoord(0.0f, 1.0f)
+    gl.color(0, 0, 255);
+    gl.vertex(  -0.0, -10.5, -0.75 );
+
+    gl.texCoord(1.0f, 1.0f)
+    gl.color( 0.0f, 0.0f, 1.0f);
+    gl.vertex(-1f, 11f, -0.75f); 
+
     gl.end();
+
     gl.flush();
+
+
   }
 
   type def handleEvent(e : CRef[SDL.Event]) : void = switch e {

@@ -1,0 +1,64 @@
+with _root_.tyr.container.Array2
+with u8:=Unsigned[8]
+with _root_.tyr.lang.container.Iterator
+with tyr.math.`3d`.Vector
+with tyr.lang.container.range
+
+with feldentm.thyGL.gl;
+
+class Level {
+
+    type val size = 256
+
+    var map : Array2[u8]
+
+    new (from : Iterator[byte]){
+        map = new Array2[u8](size, size, {
+            if(from.hasNext()){
+                u8 !! from.next() 
+            }
+            else{
+                0u8
+            }
+        })
+    }
+
+    def draw (position : Vector){
+
+    //texture.bind();
+
+    
+    
+    gl.begin(gl.TRIANGLES);
+    range(-64, 64).foreach x do {
+        range(-64, 64).foreach y do {
+            
+            val posX = position.x.toInt[32]() + x
+            val posY = position.y.toInt[32]() + y
+
+            //erstes Dreieck
+            gl.color(0, 0, 255);
+            gl.vertex( posX + 0, hight(posX,posY), posY + 0);
+            gl.vertex( posX + 1, hight(posX,posY), posY + 0);
+            gl.vertex( posX + 1, hight(posX,posY), posY + 1);
+
+            //zweites Dreieck
+            gl.color(0, 255, 0);
+            gl.vertex( posX + 0, hight(posX,posY), posY + 0);
+            gl.vertex( posX + 0, hight(posX,posY), posY + 1);
+            gl.vertex( posX + 1, hight(posX,posY), posY + 1);
+            
+        }
+    }
+    gl.end();
+    }
+
+    def hight(posX : int, posY : int){
+        return map(posX%size, posY%size).resize[32]().sign(); 
+    }
+
+    test "Load E1M1"{
+        new Level(maps.e1m1.iterator())
+        //draw(new position(0,0,0))
+    }
+}

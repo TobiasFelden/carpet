@@ -5,13 +5,19 @@ with u8:=Unsigned[8]
 class LevelBuilder {
 
     type val maxHeight = 20f
+
     var size : int
     var waterLevel : float
     var map : Array2[u8]
 
+    /*  
+    *   Greife auf die Maps zu um die Informationen aus der Datei zu lesen
+    *   
+    */
     new (size:=size : int, waterLevel:=waterLevel : float) {
         val maxSize = 255
         map = new Array2[u8](size, size)
+        //maps.e1m1.iterator
 
         //def foreach 
     }
