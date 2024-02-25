@@ -1,7 +1,8 @@
 //verwaltet alle Entitäten
 with _root_.tyr.lang.container.ArrayBuffer
 with _root_.tyr.lang.container.Pair
-with tyr.math.`3d`.Vector
+
+with feldentm.symbolic.math.Vector
 
 class EntityManager <: abstract, final {
 

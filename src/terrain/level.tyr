@@ -1,9 +1,10 @@
 with _root_.tyr.container.Array2
 with u8:=Unsigned[8]
 with _root_.tyr.lang.container.Iterator
-with tyr.math.`3d`.Vector
+
 with tyr.lang.container.range
 
+with feldentm.symbolic.math.Vector
 with feldentm.thyGL.gl;
 
 class Level {

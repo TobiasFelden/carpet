@@ -1,6 +1,5 @@
-with tyr.math.`3d`.Vector
-
 with feldentm.symbolic
+with feldentm.symbolic.math.Vector
 with feldentm.symbolic.Window
 with feldentm.thyGL.gl;
 

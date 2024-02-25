@@ -1,6 +1,7 @@
-with tyr.math.`3d`.Vector
 with tyr.lang.container.ArrayBuffer
 with tyr.lang.container.Pair
+
+with feldentm.symbolic.math.Vector
 
 class Entity <: abstract {
 
